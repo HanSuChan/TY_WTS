@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.ty.webproject.dao.SelectMemberDAO">
+
+	<select id="getFullUserInfo" parameterType="string"
+		resultType="com.ty.webproject.member.dto.MemberDTO">
+		select *
+		from tb_member
+		where id = #{id}
+	</select>
+
+	<select id="findIdResult" parameterType="map"
+		resultType="com.ty.webproject.member.dto.MemberDTO">
+		select id
+		from tb_member
+		where name = #{name}
+		and email = #{email}
+	</select>
+
+	<select id="findPwResult" parameterType="map"
+		resultType="com.ty.webproject.member.dto.MemberDTO">
+		select userpw1
+		from tb_member
+		where id = #{id}
+		and phone = #{phone}
+	</select>
+</mapper>

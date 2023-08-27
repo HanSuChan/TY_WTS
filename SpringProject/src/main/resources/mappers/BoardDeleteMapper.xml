@@ -1,0 +1,28 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.ty.webproject.board.repository.BoardRepository">
+
+	<delete id="deleteBoard">
+		DELETE TB_BOARD
+		WHERE
+		IDX = #{IDX}
+	
+
+	</delete>
+
+	<delete id="deleteReply">
+		DELETE TB_REPLY
+		WHERE
+		Idx = #{Idx}
+	
+
+	</delete>
+
+
+
+
+</mapper>
+

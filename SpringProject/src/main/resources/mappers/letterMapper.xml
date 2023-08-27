@@ -1,0 +1,26 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="com.ty.webproject.letter.repository.LetterRepository">
+
+<select id="getPopup" resultType="com.ty.webproject.letter.dto.LetterDTO">
+  SELECT *
+  FROM letters
+  WHERE to_id = #{to_id}
+  ORDER BY letter_date DESC
+</select>
+
+<update id="letterDeletet">
+UPDATE letters
+SET tocheck = 1
+WHERE to_id = #{lto_id} AND from_id = #{lfrom_id} AND letter_date = #{ltime}
+</update>
+
+<insert id="letterWrite">
+INSERT INTO letters (to_id, from_id, title, content, letter_date)
+VALUES (#{to_idl},#{from_idl},#{titlel},#{contentl},#{letter_datel})
+
+</insert>
+</mapper>
+

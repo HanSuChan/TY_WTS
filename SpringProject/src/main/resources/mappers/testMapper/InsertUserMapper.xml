@@ -1,0 +1,32 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ty.webproject.dao.InsertMemberDAO">
+
+
+	<insert id="insertMemberDTO"
+		parameterType="com.ty.webproject.member.dto.MemberDTO">
+		insert into tb_member(id, userpw1, userpw2, name,
+		regnum1,
+		regnum2, email, phone, sex, year, month, day, address,
+		extraAddress,
+		detailAddress)
+		values
+		(#{id}, #{userpw1}, #{userpw2},
+		#{name},
+		#{regnum1},#{regnum2},
+		#{email}, #{phone}, #{sex},
+		#{year},#{month},
+		#{day}, #{address}, #{extraAddress},
+		#{detailAddress})
+	</insert>
+
+<select id="existsById" resultType="boolean">
+		SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+		FROM tb_member
+		WHERE id = #{id}
+	</select>
+
+
+</mapper>

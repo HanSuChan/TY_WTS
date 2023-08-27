@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.ty.webproject.balance.repository.BalanceRepository">
+	<select id="selectBalanceData"
+		resultType="com.ty.webproject.balance.dto.BalanceDTO" parameterType="string">
+		SELECT *
+		FROM
+		account
+		WHERE member_id = #{loggedIn_id}
+	</select>
+	
+	<insert id="addPrivateBalance" parameterType="com.ty.webproject.balance.dto.BalanceDTO">
+		insert into account(balance, member_id)
+		values
+		(5000000, #{member_id})
+	</insert>
+
+	<select id="getPrivateBalance"
+		resultType="com.ty.webproject.balance.dto.BalanceDTO"
+		parameterType="String">
+		SELECT balance
+		FROM
+		Account
+		WHERE member_id = #{member_id}
+	</select>
+	<update id="updateBalanceData" parameterType="com.ty.webproject.balance.dto.BalanceDTO">
+		UPDATE Account
+		SET balance = #{balance}
+		WHERE member_id = #{member_id}
+	</update>
+
+</mapper>

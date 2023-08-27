@@ -1,0 +1,32 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.ty.webproject.dao.UpdateMemberDAO">
+
+	<select id="getUserById"
+		resultType="com.ty.webproject.member.dto.MemberDTO">
+		SELECT * FROM tb_member WHERE id = #{id}
+	</select>
+
+	<update id="updateform"
+		parameterType="com.ty.webproject.member.dto.MemberDTO">
+		UPDATE tb_member
+		SET
+		userpw1 = #{userpw2}, 
+		userpw2 = #{userpw2}, 
+		name = #{name},
+		email = #{email},
+		phone = #{phone},
+		sex = #{sex},
+		year = #{year},
+		month = #{month},
+		day = #{day},
+		address = #{address},
+		extraAddress = #{extraAddress},
+		detailAddress = #{detailAddress}
+		WHERE id = #{id}
+	</update>
+
+</mapper>

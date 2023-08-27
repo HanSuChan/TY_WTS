@@ -1,0 +1,123 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.ty.webproject.stock.repository.StockRepository">
+	<insert id="insertStockCode" parameterType="java.util.List">
+		<foreach collection="list" item="stock">
+			INSERT INTO stockcode (code,
+			name, second_code, std_price)
+			VALUES (#{1}, #{1}, #{1}, #{1})
+		</foreach>
+	</insert>
+
+	<select id="getStockCode" resultType="String">
+		SELECT code FROM stockcode
+		WHERE regexp_like(name, #{stockItem})
+		AND ROWNUM = 1
+	</select>
+
+	<select id="autocomplete" parameterType="map" resultType="map">
+		SELECT
+		code,
+		name
+		FROM stockcode
+		WHERE name LIKE '%'|| #{value} || '%'
+	</select>
+
+	<select id="getStockHistory"
+		resultType="com.ty.webproject.stock.dto.StockHistoryDTO"
+		parameterType="String">
+    <![CDATA[
+    SELECT
+        userstock_name,
+        price,
+        quantity,
+        type,
+        trading_date
+    FROM (
+        SELECT
+            userstock_name,
+            price,
+            quantity,
+            type,
+            trading_date
+        FROM STOCKHISTORY
+        WHERE member_id = #{member_id}
+        ORDER BY trading_date DESC
+    )
+    WHERE ROWNUM <= 14
+    ]]>
+	</select>
+
+	<select id="getStockHoldoings"
+		resultType="com.ty.webproject.stock.dto.StockHoldingDTO"
+		parameterType="String">
+
+		SELECT
+		stockName,
+		stockPrice,
+		stockQuantity
+		FROM
+		stockholding
+		WHERE member_id = #{member_id}
+	</select>
+
+	<select id="getStockHoldoingById"
+		resultType="com.ty.webproject.stock.dto.StockHoldingDTO"
+		parameterType="String">
+		SELECT
+		*
+		FROM stockholding
+		WHERE member_id = #{member_Id}
+		and stockcode = #{stockCode}
+	</select>
+
+	<!-- StockHoldingDTO 객체를 이용한 데이터 삽입 -->
+	<insert id="insertStockHoldingById"
+		parameterType="com.ty.webproject.stock.dto.StockHoldingDTO">
+		INSERT INTO stockholding (stockCode, stockName,
+		stockPrice, stockQuantity,
+		member_id)
+		VALUES (#{stockCode},
+		#{stockName}, #{stockPrice}, #{stockQuantity},
+		#{member_id})
+	</insert>
+
+	<update id="updateStockHoldingById"
+		parameterType="com.ty.webproject.stock.dto.StockHoldingDTO">
+		UPDATE stockholding
+		SET stockPrice = #{stockPrice},
+		stockQuantity = #{stockQuantity},
+		STOCKCODE = #{stockCode},
+		STOCKNAME =
+		#{stockName},
+		MEMBER_ID = #{member_id}
+		WHERE STOCKCODE = #{stockCode}
+		AND MEMBER_ID = #{member_id}
+	</update>
+
+	<delete id="deleteStockHoldingById"
+		parameterType="com.ty.webproject.stock.dto.StockHoldingDTO">
+		DELETE FROM stockholding
+		WHERE stockCode = #{stockCode}
+		AND member_id = #{member_id}
+	</delete>
+
+	<insert id="insertStockHistory"
+		parameterType="java.util.HashMap">
+		INSERT INTO STOCKHISTORY (
+		USERSTOCK_CODE, USERSTOCK_NAME, PRICE, QUANTITY, MEMBER_ID, TYPE, TRADING_DATE
+		)
+		VALUES (
+		#{stockHoldingDTO.stockCode},
+		#{stockHoldingDTO.stockName},
+		#{stockHoldingDTO.stockPrice},
+		#{stockHoldingDTO.stockQuantity},
+		#{stockHoldingDTO.member_id},
+		#{type},
+		#{date, jdbcType=DATE}
+		)
+	</insert>
+</mapper>

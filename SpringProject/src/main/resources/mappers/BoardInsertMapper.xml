@@ -1,0 +1,41 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.ty.webproject.board.repository.BoardRepository">
+	<insert id="addBoard">
+		INSERT INTO
+		tb_board
+		(
+		title,
+		image,
+		contents
+		)
+		VALUES
+		(
+		#{title},
+		#{image},
+		#{contents}
+		)
+	</insert>
+
+	<insert id="addReply">
+		INSERT INTO
+		tb_reply
+		(
+		board_idx,
+		reply_idx,
+		contents
+		)
+		VALUES
+		(
+		#{boardIdx},
+		#{replyIdx},
+		#{contents}
+		)
+	</insert>
+
+
+
+</mapper>
