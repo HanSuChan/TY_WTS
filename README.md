@@ -1,5 +1,5 @@
 # TY_WTS
-웹 HTS 프로젝트 
+웹 HTS 팀 프로젝트 
 
 사용한 템플릿 : 부트스트랩 CORONA
 https://www.bootstrapdash.com/product/corona-admin-template
