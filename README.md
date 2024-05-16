@@ -8,7 +8,8 @@
 한수찬 : 인프라 , 미들(Flask) , DB, 주문 , 호가, 주문 내역(실시간) 
 나강혁 : 게시판
 권용환 : 차트
-이동한 : 로그인, 유저 파트
+이동한 : 로그인, 유저
+
 사용한 템플릿 : 부트스트랩 CORONA
 https://www.bootstrapdash.com/product/corona-admin-template
 
