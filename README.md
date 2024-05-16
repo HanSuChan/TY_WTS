@@ -22,6 +22,7 @@ https://www.bootstrapdash.com/product/corona-admin-template
 # 주요 라이브러리
   Lombok , Jackson , D3.js , chart.js 
 # 프로젝트 소개
+주요 기술 스택 : Html, Css, Js,jQuery,BootStrap, Ubuntu, SpringBoot, Oracle, Docker
 ![image](https://github.com/HanSuChan/TY_WTS/assets/83399952/654c5395-2524-41f2-89c3-9291614e385d)
 
 # 시황
