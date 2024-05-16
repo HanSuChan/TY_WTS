@@ -27,6 +27,12 @@ https://www.bootstrapdash.com/product/corona-admin-template
   Lombok , Jackson , D3.js , chart.js 
 # 프로젝트 소개
 주요 기술 스택 : Html, Css, Js,jQuery,BootStrap, Ubuntu, SpringBoot, Oracle, Docker
+
+#아쉬웠던 점
+구현하는 기간이 4~5일이어서 트랜잭션에 대한 생각을 못했다..
+Spring Boot를 처음해서 HTTP메소드를 다 써보지 못하고 한 패턴으로만 구현했다.
+Js를 체계 없이 사용해서 렌더링이 느렸고 비동기적인 요청의 순서를 잘 구분하지 못했다.
+
 ![image](https://github.com/HanSuChan/TY_WTS/assets/83399952/654c5395-2524-41f2-89c3-9291614e385d)
 
 # 시황
