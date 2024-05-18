@@ -29,6 +29,7 @@ https://www.bootstrapdash.com/product/corona-admin-template
 주요 기술 스택 : Html, Css, Js,jQuery,BootStrap, Ubuntu, SpringBoot, Oracle, Docker
 
 #아쉬웠던 점
+
 구현하는 기간이 4~5일이어서 트랜잭션에 대한 생각을 못했다..
 
 Spring Boot를 처음해서 HTTP메소드를 다 써보지 못하고 한 패턴으로만 구현했다.
